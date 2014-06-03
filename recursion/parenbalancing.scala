@@ -1,6 +1,9 @@
 
-def balance(chars: List[Char]): Boolean = {
-  def balance(chars: List[Char], num_unmatched: Int): Boolean = {
+import scala.annotation.switch
+
+def balanced(chars: List[Char]): Boolean = {
+
+  def balanced(chars: List[Char], num_unmatched: Int): Boolean = {
     if (chars.isEmpty || num_unmatched < 0) {
       return num_unmatched == 0
     }
@@ -11,8 +14,8 @@ def balance(chars: List[Char]): Boolean = {
       case _ => num_unmatched
     }
 
-    return balance(chars.tail, unmatched)
+    balanced(chars.tail, unmatched)
   }
 
-  return balance(chars, 0)
+  balanced(chars, 0)
 }
